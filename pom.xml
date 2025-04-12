@@ -21,6 +21,11 @@
     <micronaut.aot.packageName>io.callminer.aot.generated</micronaut.aot.packageName>
     <micronaut.runtime>netty</micronaut.runtime>
     <exec.mainClass>io.callminer.Application</exec.mainClass>
+    <aws.sdk.version>2.25.47</aws.sdk.version>
+    <opensearch.version>2.25.47</opensearch.version>
+    
+
+
   </properties>
 
   <repositories>
@@ -29,6 +34,22 @@
       <url>https://repo.maven.apache.org/maven2</url>
     </repository>
   </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- AWS SDK BOM -->
+      <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>bom</artifactId>
+        <version>${aws.sdk.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+
 
   <dependencies>
     <dependency>
@@ -66,17 +87,19 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
+
+    
     <!-- AWS OpenSearch -->
-  <dependency>
-    <groupId>software.amazon.awssdk</groupId>
-    <artifactId>opensearch</artifactId>
-  </dependency>
-  <!-- AWS Bedrock Runtime -->
-  <dependency>
-    <groupId>software.amazon.awssdk</groupId>
-    <artifactId>bedrock</artifactId>
-    <version>2.25.4</version> <!-- Use the latest version -->
-</dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>opensearch</artifactId>
+      
+    </dependency>
+    <!-- AWS Bedrock Runtime -->
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>bedrock</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
